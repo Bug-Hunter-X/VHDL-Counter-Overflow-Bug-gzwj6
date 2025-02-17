@@ -1,0 +1,26 @@
+```vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity fixed_counter is
+  port (
+    clk : in std_logic;
+    rst : in std_logic;
+    count : out integer range 0 to 15
+  );
+end entity;
+
+architecture behavioral of fixed_counter is
+  signal internal_count : unsigned(3 downto 0) := (others => '0'); -- Use unsigned for modular arithmetic
+begin
+  process (clk, rst)
+  begin
+    if rst = '1' then
+      internal_count <= (others => '0');
+    elsif rising_edge(clk) then
+      internal_count <= internal_count + 1;
+    end if;
+  end process;
+  count <= to_integer(internal_count);
+end architecture;
+```
