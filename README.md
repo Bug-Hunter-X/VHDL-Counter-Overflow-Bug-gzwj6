@@ -1,0 +1,4 @@
+# VHDL Counter Overflow Bug
+This repository demonstrates a common error in VHDL code: integer overflow in a counter.  The `buggy_counter.vhdl` file contains a counter that uses the `integer` type. This type has a potentially very large range, making overflow difficult to detect during simulation. However, when synthesized to hardware, the range will be limited, causing unexpected behavior.
+
+The `fixed_counter.vhdl` demonstrates how to correctly implement a counter that avoids overflow and ensures predictable behavior.  This corrected version uses a type with an explicitly defined range, preventing overflow.  It highlights the importance of using appropriately sized data types in VHDL to avoid subtle errors.
